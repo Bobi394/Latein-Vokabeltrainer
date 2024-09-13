@@ -1,45 +1,70 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f0f0f0;
+// Array zum Speichern der Vokabeln
+let vokabeln = [];
+
+// Funktion zum Hinzufügen einer neuen Vokabel
+function addVokabel() {
+    const latein = document.getElementById("latein").value;
+    const uebersetzung = document.getElementById("uebersetzung").value;
+
+    if (latein && uebersetzung) {
+        vokabeln.push({ latein, uebersetzung });
+        document.getElementById("latein").value = '';
+        document.getElementById("uebersetzung").value = '';
+        displayVokabeln();
+    }
 }
 
-h1, h2 {
-    color: #333;
+// Funktion zur Anzeige der Vokabeln
+function displayVokabeln() {
+    const vokabelListe = document.getElementById("vokabelListe");
+    vokabelListe.innerHTML = ''; // Liste leeren
+
+    vokabeln.forEach((vokabel, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `${vokabel.latein} - ${vokabel.uebersetzung} <button onclick="deleteVokabel(${index})">Löschen</button>`;
+        vokabelListe.appendChild(li);
+    });
 }
 
-input {
-    margin: 5px;
-    padding: 10px;
-    width: 200px;
+// Funktion zum Löschen einer Vokabel
+function deleteVokabel(index) {
+    vokabeln.splice(index, 1);
+    displayVokabeln();
 }
 
-button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
+// Funktion zum Abfragen einer zufälligen Vokabel
+function lernen() {
+    if (vokabeln.length > 0) {
+        const randomIndex = Math.floor(Math.random() * vokabeln.length);
+        const vokabel = vokabeln[randomIndex];
+        document.getElementById("frage").innerText = vokabel.latein;
+        document.getElementById("frage").dataset.index = randomIndex;
+        document.getElementById("feedback").innerText = '';
+
+        // Übersetzung ausblenden
+        document.getElementById("uebersetzung").style.visibility = 'hidden';
+        document.getElementById("uebersetzung").innerText = vokabel.uebersetzung;
+        document.getElementById("showTranslationBtn").style.display = 'block'; // Button zum Anzeigen der Übersetzung anzeigen
+    }
 }
 
-button:hover {
-    background-color: #0056b3;
+// Funktion zum Anzeigen der Übersetzung
+function showTranslation() {
+    document.getElementById("uebersetzung").style.visibility = 'visible';
+    document.getElementById("showTranslationBtn").style.display = 'none'; // Button ausblenden
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
+// Funktion zur Überprüfung der Antwort
+function checkAntwort() {
+    const index = document.getElementById("frage").dataset.index;
+    const antwort = document.getElementById("antwort").value;
+    const vokabel = vokabeln[index];
 
-li {
-    padding: 5px;
-    background-color: white;
-    margin: 5px 0;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #ccc;
-}
+    if (antwort === vokabel.uebersetzung) {
+        document.getElementById("feedback").innerText = "Richtig!";
+    } else {
+        document.getElementById("feedback").innerText = `Falsch! Die richtige Antwort ist: ${vokabel.uebersetzung}`;
+    }
 
-li button {
-    background-color: #dc3545;
+    document.getElementById("antwort").value = '';
 }
