@@ -65,22 +65,33 @@ function startQuiz() {
     document.getElementById('quiz-section').style.display = 'block';
     currentWordIndex = 0;
     displayQuizWord();
+    document.getElementById('quiz-feedback').textContent = ''; // Reset feedback
 }
 
 // Nächstes Wort im Quiz anzeigen
 function nextWord() {
     currentWordIndex = (currentWordIndex + 1) % vocabList.length;
     displayQuizWord();
+    document.getElementById('user-translation').value = ''; // Reset input
+    document.getElementById('quiz-feedback').textContent = ''; // Reset feedback
 }
 
 // Quiz-Wort und -Übersetzung anzeigen
 function displayQuizWord() {
     document.getElementById('quiz-word').textContent = vocabList[currentWordIndex].word;
-    document.getElementById('quiz-translation').textContent = vocabList[currentWordIndex].translation;
-    document.getElementById('quiz-translation').classList.add('hidden');
 }
 
-// Übersetzung anzeigen
-function showTranslation() {
-    document.getElementById('quiz-translation').classList.remove('hidden');
+// Übersetzung überprüfen
+function checkTranslation() {
+    const userTranslation = document.getElementById('user-translation').value.trim();
+    const correctTranslation = vocabList[currentWordIndex].translation;
+
+    const feedbackElement = document.getElementById('quiz-feedback');
+    if (userTranslation.toLowerCase() === correctTranslation.toLowerCase()) {
+        feedbackElement.textContent = 'Richtig!';
+        feedbackElement.style.color = 'green';
+    } else {
+        feedbackElement.textContent = `Falsch! Die richtige Antwort ist: ${correctTranslation}`;
+        feedbackElement.style.color = 'red';
+    }
 }
