@@ -32,8 +32,7 @@ function displayVokabeln() {
 
         // Übersetzung mit Augen-Button
         const uebersetzungSpan = document.createElement("span");
-        uebersetzungSpan.innerText = vokabel.hiddenUebersetzung ?
-                uebersetzungSpan.innerText = vokabel.hiddenUebersetzung ? "•••••" : vokabel.uebersetzung;
+        uebersetzungSpan.innerText = vokabel.hiddenUebersetzung ? "•••••" : vokabel.uebersetzung;
         const uebersetzungButton = document.createElement("button");
         uebersetzungButton.className = "eye-button";
         uebersetzungButton.innerHTML = vokabel.hiddenUebersetzung ? '👁️' : '🙈';
