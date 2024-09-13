@@ -28,6 +28,9 @@
         <h2>Vokabel Lernen</h2>
         <button onclick="lernen()">Vokabel abfragen</button>
         <p id="frage"></p>
+        <button id="showTranslationBtn" onclick="showTranslation()" style="display:none;">Übersetzung anzeigen</button>
+        <p id="uebersetzung" style="visibility:hidden;"></p>
+
         <input type="text" id="antwort" placeholder="Übersetzung">
         <button onclick="checkAntwort()">Antwort prüfen</button>
         <p id="feedback"></p>
