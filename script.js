@@ -27,7 +27,9 @@ function displayVokabeln() {
         lateinSpan.innerText = vokabel.hiddenLatein ? "•••••" : vokabel.latein;
         const lateinButton = document.createElement("button");
         lateinButton.className = "eye-button";
-        lateinButton.innerHTML = vokabel.hiddenLatein ? '👁️' : '🙈';
+
+        // Icon für Lateinisches Wort basierend auf dem visibility status
+        lateinButton.innerHTML = vokabel.hiddenLatein ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
         lateinButton.onclick = () => toggleLateinVisibility(index);
 
         // Übersetzung mit Augen-Button
@@ -35,7 +37,9 @@ function displayVokabeln() {
         uebersetzungSpan.innerText = vokabel.hiddenUebersetzung ? "•••••" : vokabel.uebersetzung;
         const uebersetzungButton = document.createElement("button");
         uebersetzungButton.className = "eye-button";
-        uebersetzungButton.innerHTML = vokabel.hiddenUebersetzung ? '👁️' : '🙈';
+
+        // Icon für Übersetzung basierend auf dem visibility status
+        uebersetzungButton.innerHTML = vokabel.hiddenUebersetzung ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
         uebersetzungButton.onclick = () => toggleUebersetzungVisibility(index);
 
         // Füge lateinisches Wort und Übersetzung mit Buttons in die Liste ein
