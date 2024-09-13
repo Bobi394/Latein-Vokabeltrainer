@@ -18,6 +18,10 @@
         button {
             margin-top: 10px;
         }
+        #quiz-section {
+            margin-top: 20px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -25,11 +29,26 @@
 
     <label for="latin-word">Lateinisches Wort:</label>
     <input type="text" id="latin-word">
+    <br>
+    <label for="translation">Übersetzung:</label>
+    <input type="text" id="translation">
+    <br>
     <button onclick="addWord()">Wort hinzufügen</button>
 
     <button onclick="toggleWords()">Alle Wörter aus-/einblenden</button>
 
     <ul id="vocab-list"></ul>
+
+    <button onclick="startQuiz()">Vokabeln lernen (Quiz)</button>
+
+    <!-- Quiz Abschnitt -->
+    <div id="quiz-section">
+        <h2>Vokabeln lernen</h2>
+        <p id="quiz-word"></p>
+        <button onclick="showTranslation()">Übersetzung anzeigen</button>
+        <p id="quiz-translation" class="hidden"></p>
+        <button onclick="nextWord()">Nächstes Wort</button>
+    </div>
 
     <script src="app.js"></script>
 </body>
