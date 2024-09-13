@@ -22,6 +22,10 @@
             margin-top: 20px;
             display: none;
         }
+        #quiz-feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -45,8 +49,9 @@
     <div id="quiz-section">
         <h2>Vokabeln lernen</h2>
         <p id="quiz-word"></p>
-        <button onclick="showTranslation()">Übersetzung anzeigen</button>
-        <p id="quiz-translation" class="hidden"></p>
+        <input type="text" id="user-translation" placeholder="Übersetzung eingeben">
+        <button onclick="checkTranslation()">Antwort überprüfen</button>
+        <p id="quiz-feedback"></p>
         <button onclick="nextWord()">Nächstes Wort</button>
     </div>
 
