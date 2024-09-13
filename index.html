@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latein Vokabel WebApp</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Latein Vokabel WebApp</h1>
+
+    <!-- Bereich zum Hinzufügen neuer Vokabeln -->
+    <div>
+        <h2>Vokabel hinzufügen</h2>
+        <input type="text" id="latein" placeholder="Lateinisches Wort">
+        <input type="text" id="uebersetzung" placeholder="Übersetzung">
+        <button onclick="addVokabel()">Hinzufügen</button>
+    </div>
+
+    <!-- Liste der Vokabeln -->
+    <div>
+        <h2>Vokabel Liste</h2>
+        <ul id="vokabelListe"></ul>
+    </div>
+
+    <!-- Bereich zum Lernen -->
+    <div>
+        <h2>Vokabel Lernen</h2>
+        <button onclick="lernen()">Vokabel abfragen</button>
+        <p id="frage"></p>
+        <input type="text" id="antwort" placeholder="Übersetzung">
+        <button onclick="checkAntwort()">Antwort prüfen</button>
+        <p id="feedback"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
