@@ -2,6 +2,10 @@
 let vocabList = JSON.parse(localStorage.getItem('vocabList')) || [];
 let wordsVisible = true;
 let currentWordIndex = 0;
+let selectedWords = [];
+let correctAnswers = 0;
+let score = 0;
+const totalQuizWords = 5;
 
 // Vokabeln bei Seitenaufruf anzeigen
 window.onload = displayWords;
@@ -58,40 +62,66 @@ function toggleWords() {
 
 // Quiz starten
 function startQuiz() {
-    if (vocabList.length === 0) {
-        alert('Keine Vokabeln vorhanden!');
+    if (vocabList.length < totalQuizWords) {
+        alert('Es gibt nicht genug Wörter, um ein Quiz zu starten!');
         return;
     }
+
     document.getElementById('quiz-section').style.display = 'block';
+    document.getElementById('quiz-feedback').textContent = ''; // Feedback zurücksetzen
+
+    selectedWords = getRandomWords(totalQuizWords); // 5 zufällige Wörter auswählen
     currentWordIndex = 0;
+    correctAnswers = 0;
     displayQuizWord();
-    document.getElementById('quiz-feedback').textContent = ''; // Reset feedback
+}
+
+// Zufällig 5 Wörter aus der Vokabelliste auswählen
+function getRandomWords(count) {
+    const shuffled = [...vocabList].sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
 }
 
 // Nächstes Wort im Quiz anzeigen
 function nextWord() {
-    currentWordIndex = (currentWordIndex + 1) % vocabList.length;
-    displayQuizWord();
-    document.getElementById('user-translation').value = ''; // Reset input
-    document.getElementById('quiz-feedback').textContent = ''; // Reset feedback
+    currentWordIndex++;
+    if (currentWordIndex < selectedWords.length) {
+        displayQuizWord();
+        document.getElementById('user-translation').value = ''; // Eingabefeld zurücksetzen
+        document.getElementById('quiz-feedback').textContent = ''; // Feedback zurücksetzen
+    } else {
+        endQuiz(); // Quiz beenden, wenn alle Wörter angezeigt wurden
+    }
 }
 
-// Quiz-Wort und -Übersetzung anzeigen
+// Quiz-Wort anzeigen
 function displayQuizWord() {
-    document.getElementById('quiz-word').textContent = vocabList[currentWordIndex].word;
+    document.getElementById('quiz-word').textContent = selectedWords[currentWordIndex].word;
 }
 
 // Übersetzung überprüfen
 function checkTranslation() {
     const userTranslation = document.getElementById('user-translation').value.trim();
-    const correctTranslation = vocabList[currentWordIndex].translation;
+    const correctTranslation = selectedWords[currentWordIndex].translation;
 
     const feedbackElement = document.getElementById('quiz-feedback');
     if (userTranslation.toLowerCase() === correctTranslation.toLowerCase()) {
         feedbackElement.textContent = 'Richtig!';
         feedbackElement.style.color = 'green';
+        correctAnswers++; // Erhöhe die Anzahl der richtigen Antworten
     } else {
         feedbackElement.textContent = `Falsch! Die richtige Antwort ist: ${correctTranslation}`;
         feedbackElement.style.color = 'red';
     }
+}
+
+// Quiz beenden und Punktestand anzeigen
+function endQuiz() {
+    if (correctAnswers === totalQuizWords) {
+        score++; // Einen Punkt hinzufügen, wenn alle Antworten richtig sind
+        document.getElementById('quiz-feedback').textContent = `Gratulation! Du hast alle ${totalQuizWords} Wörter richtig.`;
+    } else {
+        document.getElementById('quiz-feedback').textContent = `Du hast ${correctAnswers} von ${totalQuizWords} richtig beantwortet.`;
+    }
+    document.getElementById('score').textContent = score; // Aktualisiere den Punktestand
 }
