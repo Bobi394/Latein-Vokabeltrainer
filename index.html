@@ -4,36 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latein Vokabeltrainer</title>
+    <style>
+        /* Hier bleibt das CSS vom vorherigen Beispiel */
+    </style>
 </head>
 <body>
     <div class="container">
-    <h1>Latein Vokabeltrainer</h1>
+        <h1>Latein Vokabeltrainer</h1>
 
-    <label for="latin-word">Lateinisches Wort:</label>
-    <input type="text" id="latin-word">
-    <br>
-    <label for="translation">Übersetzung:</label>
-    <input type="text" id="translation">
-    <br>
-    <button onclick="addWord()">Wort hinzufügen</button>
+        <label for="latin-word">Lateinisches Wort:</label>
+        <input type="text" id="latin-word">
+        <br>
+        <label for="translation">Übersetzung:</label>
+        <input type="text" id="translation">
+        <br>
+        <button onclick="addWord()">Wort hinzufügen</button>
 
-    <button onclick="toggleWords()">Alle Wörter aus-/einblenden</button>
+        <button onclick="toggleWords()">Alle Wörter aus-/einblenden</button>
 
-    <ul id="vocab-list"></ul>
+        <ul id="vocab-list"></ul>
 
-    <button onclick="startQuiz()">Vokabeln lernen (Quiz)</button>
+        <button onclick="startQuiz()">Vokabeln lernen (Quiz)</button>
 
-    <!-- Quiz Abschnitt -->
-    <div id="quiz-section">
-        <h2>Vokabeln lernen</h2>
-        <p id="quiz-word"></p>
-        <input type="text" id="user-translation" placeholder="Übersetzung eingeben">
-        <button onclick="checkTranslation()">Antwort überprüfen</button>
-        <p id="quiz-feedback"></p>
-        <button onclick="nextWord()">Nächstes Wort</button>
+        <!-- Punktestand -->
+        <div id="score-section">
+            <h3>Punktestand: <span id="score">0</span></h3>
+        </div>
+
+        <!-- Quiz Abschnitt -->
+        <div id="quiz-section">
+            <h2>Vokabeln lernen</h2>
+            <p id="quiz-word"></p>
+            <input type="text" id="user-translation" placeholder="Übersetzung eingeben">
+            <button onclick="checkTranslation()">Antwort überprüfen</button>
+            <p id="quiz-feedback"></p>
+            <button onclick="nextWord()">Nächstes Wort</button>
+        </div>
     </div>
-
     <script src="app.js"></script>
-    </div>
 </body>
 </html>
