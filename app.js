@@ -1,4 +1,3 @@
-// Wörter aus dem localStorage laden oder leere Liste initialisieren
 let vocabList = JSON.parse(localStorage.getItem('vocabList')) || [];
 let wordsVisible = true;
 let currentWordIndex = 0;
@@ -124,4 +123,10 @@ function endQuiz() {
         document.getElementById('quiz-feedback').textContent = `Du hast ${correctAnswers} von ${totalQuizWords} richtig beantwortet.`;
     }
     document.getElementById('score').textContent = score; // Aktualisiere den Punktestand
+}
+
+// Punktestand zurücksetzen
+function resetScore() {
+    score = 0;
+    document.getElementById('score').textContent = score; // Punktestand auf 0 setzen
 }
