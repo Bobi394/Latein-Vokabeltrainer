@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latein Vokabeltrainer</title>
     <style>
-        /* Hier bleibt das CSS vom vorherigen Beispiel */
+        .hidden {
+            display: none;
+        }
+        /* Weitere CSS-Styling hier */
     </style>
 </head>
 <body>
@@ -29,7 +32,7 @@
         <!-- Punktestand -->
         <div id="score-section">
             <h3>Punktestand: <span id="score">0</span></h3>
-            <button onclick="resetScore()">Punktestand zurücksetzen</button> <!-- Reset-Button -->
+            <button onclick="resetScore()">Punktestand zurücksetzen</button>
         </div>
 
         <!-- Quiz Abschnitt -->
