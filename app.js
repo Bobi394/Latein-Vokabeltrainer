@@ -52,12 +52,7 @@ function deleteWord(index) {
     displayWords();
 }
 
-// Alle Wörter aus-/einblenden
-function toggleWords() {
-    const vocabListElement = document.getElementById('vocab-list');
-    wordsVisible = !wordsVisible;
-    vocabListElement.className = wordsVisible ? '' : 'hidden';
-}
+
 
 // Quiz starten
 function startQuiz() {
