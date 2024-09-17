@@ -9,6 +9,189 @@
             display: none;
         }
         /* Weitere CSS-Styling hier */
+        /* Allgemeine Stile */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #34495e;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px 0;
+    border-radius: 5px;
+    border: 1px solid #bdc3c7;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+}
+
+input[type="text"]:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+    outline: none;
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+button:active {
+    background-color: #1f6391;
+    transform: translateY(0);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #ecf0f1;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li button {
+    background-color: #e74c3c;
+    padding: 5px 10px;
+}
+
+li button:hover {
+    background-color: #c0392b;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Punktestand-Anzeige */
+#score-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#score-section h3 {
+    color: #2c3e50;
+    font-size: 1.5em;
+}
+
+#score-section button {
+    background-color: #e67e22;
+}
+
+#score-section button:hover {
+    background-color: #d35400;
+}
+
+/* Quiz-Bereich */
+#quiz-section {
+    margin-top: 20px;
+    display: none;
+}
+
+#quiz-section h2 {
+    color: #34495e;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+#quiz-word {
+    font-size: 1.6em;
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+#user-translation {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #bdc3c7;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+#quiz-feedback {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+#quiz-section button {
+    background-color: #2ecc71;
+}
+
+#quiz-section button:hover {
+    background-color: #27ae60;
+}
+
+/* Animation für das Ein-/Ausblenden */
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+ul.show {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+ul.hide {
+    animation: fadeOut 0.5s ease-in-out forwards;
+}
     </style>
 </head>
 <body>
