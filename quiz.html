@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latein Quiz</title>
+    <style>
+        /* CSS für das Quiz */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        button, input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Vokabeln lernen</h2>
+        <p id="quiz-word"></p>
+        <input type="text" id="user-translation" placeholder="Übersetzung eingeben">
+        <button onclick="checkTranslation()">Antwort überprüfen</button>
+        <p id="quiz-feedback"></p>
+        <button onclick="nextWord()">Nächstes Wort</button>
+    </div>
+
+    <script>
+        let vocabList = JSON.parse(localStorage.getItem('vocabList')) || [];
+        let quizIndex = 0;
+        let score = JSON.parse(localStorage.getItem('score')) || 0;
+        let currentWord;
+
+        function startQuiz() {
+            quizIndex = 0;
+            nextWord();
+        }
+
+        function nextWord() {
+            if (quizIndex < 5 && quizIndex < vocabList.length) {
+                currentWord = vocabList[quizIndex];
+                document.getElementById('quiz-word').textContent = currentWord.word;
+                document.getElementById('user-translation').value = '';
+                document.getElementById('quiz-feedback').textContent = '';
+                quizIndex++;
+            } else {
+                alert('Quiz beendet! Punktestand: ' + score);
+                localStorage.setItem('score', JSON.stringify(score));
+            }
+        }
+
+        function checkTranslation() {
+            const userTranslation = document.getElementById('user-translation').value.trim();
+            const feedbackElement = document.getElementById('quiz-feedback');
+            if (userTranslation === currentWord.translation) {
+                feedbackElement.textContent = 'Richtig!';
+                score++;
+            } else {
+                feedbackElement.textContent = `Falsch! Richtige Antwort: ${currentWord.translation}`;
+            }
+        }
+
+        window.onload = startQuiz;
+    </script>
+</body>
+</html>
