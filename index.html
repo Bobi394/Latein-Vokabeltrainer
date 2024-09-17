@@ -5,231 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latein Vokabeltrainer</title>
     <style>
-        .hidden {
-            display: none;
+        /* CSS Code aus den vorigen Beispielen für die Hauptseite */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
         }
-        /* Weitere CSS-Styling hier */
-        /* Allgemeine Stile */
-        /* Allgemeine Stile */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Wichtig: sorgt dafür, dass alles auf der Seite sichtbar bleibt */
-    box-sizing: border-box;
-}
-
-.container {
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    width: 90%; /* Breiter gemacht, damit es genug Platz gibt */
-    max-width: 600px;
-    padding: 20px;
-    margin: 20px 0; /* Abstand zum oberen Rand */
-}
-
-h1 {
-    font-size: 2.5em;
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-label {
-    font-weight: bold;
-    color: #34495e;
-    display: block; /* Display block, um Labels korrekt anzuzeigen */
-    margin-top: 10px;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #bdc3c7;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s;
-}
-
-input[type="text"]:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
-    outline: none;
-}
-
-button {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin: 10px 5px 0 0; /* Buttons haben Abstand untereinander */
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-button:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-}
-
-button:active {
-    background-color: #1f6391;
-    transform: translateY(0);
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-li {
-    background-color: #ecf0f1;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-li button {
-    background-color: #e74c3c;
-    padding: 5px 10px;
-}
-
-li button:hover {
-    background-color: #c0392b;
-}
-
-/* Punktestand-Anzeige */
-#score-section {
-    margin: 20px 0;
-    text-align: center;
-}
-
-#score-section h3 {
-    color: #2c3e50;
-    font-size: 1.5em;
-}
-
-#score-section button {
-    background-color: #e67e22;
-}
-
-#score-section button:hover {
-    background-color: #d35400;
-}
-
-/* Quiz-Bereich */
-#quiz-section {
-    margin-top: 20px;
-    display: none;
-}
-
-#quiz-section h2 {
-    color: #34495e;
-    font-size: 1.8em;
-    text-align: center;
-}
-
-#quiz-word {
-    font-size: 1.6em;
-    text-align: center;
-    color: #2c3e50;
-    margin-bottom: 20px;
-}
-
-#user-translation {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #bdc3c7;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-#quiz-feedback {
-    text-align: center;
-    font-size: 1.2em;
-    margin-top: 10px;
-}
-
-#quiz-section button {
-    background-color: #2ecc71;
-}
-
-#quiz-section button:hover {
-    background-color: #27ae60;
-}
-
-/* Animation für das Ein-/Ausblenden */
-.hidden {
-    display: none;
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-ul.show {
-    animation: fadeIn 0.5s ease-in-out forwards;
-}
-
-ul.hide {
-    animation: fadeOut 0.5s ease-in-out forwards;
-}
+        .container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input, button {
+            width: 100%;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            background-color: #ecf0f1;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Latein Vokabeltrainer</h1>
 
-        <label for="latin-word">Lateinisches Wort:</label>
-        <input type="text" id="latin-word">
-        <br>
-        <label for="translation">Übersetzung:</label>
-        <input type="text" id="translation">
-        <br>
+        <label for="word">Lateinisches Wort</label>
+        <input type="text" id="word" placeholder="Lateinisches Wort">
+
+        <label for="translation">Übersetzung</label>
+        <input type="text" id="translation" placeholder="Übersetzung">
+
         <button onclick="addWord()">Wort hinzufügen</button>
-
-        <button onclick="toggleWords()">Alle Wörter aus-/einblenden</button>
-
+        <button onclick="toggleWordList()">Wörter ein-/ausblenden</button>
         <ul id="vocab-list"></ul>
-
-        <button onclick="startQuiz()">Vokabeln lernen (Quiz)</button>
-
-        <!-- Punktestand -->
-        <div id="score-section">
-            <h3>Punktestand: <span id="score">0</span></h3>
-            <button onclick="resetScore()">Punktestand zurücksetzen</button>
-        </div>
-
-        <!-- Quiz Abschnitt -->
-        <div id="quiz-section">
-            <h2>Vokabeln lernen</h2>
-            <p id="quiz-word"></p>
-            <input type="text" id="user-translation" placeholder="Übersetzung eingeben">
-            <button onclick="checkTranslation()">Antwort überprüfen</button>
-            <p id="quiz-feedback"></p>
-            <button onclick="nextWord()">Nächstes Wort</button>
-        </div>
+        <button onclick="openQuiz()">Vokabeln lernen (Quiz)</button>
+        <button onclick="resetScore()">Punktestand zurücksetzen</button>
+        <h3 id="score">Punktestand: 0</h3>
     </div>
-    <script src="app.js"></script>
+
+    <script>
+        let vocabList = JSON.parse(localStorage.getItem('vocabList')) || [];
+        let score = JSON.parse(localStorage.getItem('score')) || 0;
+
+        function updateScoreDisplay() {
+            document.getElementById('score').textContent = 'Punktestand: ' + score;
+        }
+
+        function addWord() {
+            const word = document.getElementById('word').value;
+            const translation = document.getElementById('translation').value;
+
+            if (word && translation) {
+                vocabList.push({ word, translation });
+                localStorage.setItem('vocabList', JSON.stringify(vocabList));
+                document.getElementById('word').value = '';
+                document.getElementById('translation').value = '';
+                renderVocabList();
+            }
+        }
+
+        function renderVocabList() {
+            const ul = document.getElementById('vocab-list');
+            ul.innerHTML = '';
+            vocabList.forEach((vocab, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${vocab.word} - ${vocab.translation}`;
+                ul.appendChild(li);
+            });
+        }
+
+        function toggleWordList() {
+            const ul = document.getElementById('vocab-list');
+            ul.style.display = ul.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function openQuiz() {
+            window.open('quiz.html', '_blank', 'width=800,height=600');
+        }
+
+        function resetScore() {
+            score = 0;
+            localStorage.setItem('score', JSON.stringify(score));
+            updateScoreDisplay();
+        }
+
+        window.onload = function () {
+            renderVocabList();
+            updateScoreDisplay();
+        };
+    </script>
 </body>
 </html>
